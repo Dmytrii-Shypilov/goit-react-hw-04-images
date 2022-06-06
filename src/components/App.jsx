@@ -43,15 +43,15 @@ const App = () => {
           error: null,
         }));
       } catch (error) {
-        setGallery({
-          pictures: gallery.pictures,
+        setGallery(prevState => ({
+          ...prevState,
           loading: false,
           error: error.message,
-        });
+        }));
       }
     };
     fetch();
-  }, [query, page]);
+  }, [query, page,]);
 
   const loadMore = () => {
     setPage(prevPage => prevPage + 1);
